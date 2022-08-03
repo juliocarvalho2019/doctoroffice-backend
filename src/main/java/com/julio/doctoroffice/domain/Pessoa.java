@@ -120,14 +120,14 @@ public abstract class Pessoa implements Serializable{
 		this.dataCriacao = dataCriacao;
 	}
 	
-	public List<Consulta> getConsultas() {
-		return consultas;
-	}
-
-
-	public void setConsultas(List<Consulta> consultas) {
-		this.consultas = consultas;
-	}
+//	public List<Consulta> getConsultas() {
+//		return consultas;
+//	}
+//
+//
+//	public void setConsultas(List<Consulta> consultas) {
+//		this.consultas = consultas;
+//	}
 
 
 	@Override

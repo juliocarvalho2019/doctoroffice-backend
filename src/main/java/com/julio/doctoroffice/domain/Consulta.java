@@ -54,13 +54,12 @@ public class Consulta implements Serializable{
 
 	
 
-	public Consulta(Integer id, Prioridade prioridade, Status status, Pessoa pessoa, Medico medico, Paciente paciente,
+	public Consulta(Integer id, Prioridade prioridade, Status status, Medico medico, Paciente paciente,
 			Consultorio consultorio) {
 		super();
 		this.id = id;
 		this.prioridade = prioridade;
 		this.status = status;
-		this.pessoa = pessoa;
 		this.medico = medico;
 		this.paciente = paciente;
 		this.consultorio = consultorio;
