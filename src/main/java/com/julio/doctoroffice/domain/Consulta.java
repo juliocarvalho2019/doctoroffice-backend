@@ -1,47 +1,69 @@
 package com.julio.doctoroffice.domain;
 
+import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.julio.doctoroffice.domain.enums.Prioridade;
 import com.julio.doctoroffice.domain.enums.Status;
 
-public class Consulta {
+@Entity
+public class Consulta implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataAbertura = LocalDate.now();
+	
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataFechamento;
+	
 	private Prioridade prioridade;
 	private Status status;
+	@ManyToOne
+	@JoinColumn(name = "pessoa_id")
+	private Pessoa pessoa;
 	
-	private Paciente paciente;
+	@ManyToOne
+	@JoinColumn(name = "medico_id")
 	private Medico medico;
-	private List<Medico> listaMedico;
-	private Consultorio consultorio;
 	
+	@ManyToOne
+	@JoinColumn(name = "paciente_id")
+	private Paciente paciente;
+
+	@ManyToOne
+	@JoinColumn(name = "consultorio_id")
+	private Consultorio consultorio;
 	
 	
 	public Consulta() {
 		super();
 	}
 
-
-
-	public Consulta(Integer id, Prioridade prioridade, Status status, Paciente paciente, Medico medico,
-			List<Medico> listaMedico, Consultorio consultorio) {
+	public Consulta(Integer id, LocalDate dataAbertura, LocalDate dataFechamento, Prioridade prioridade, Status status,
+			Medico medico, Paciente paciente, Consultorio consultorio) {
 		super();
 		this.id = id;
+		this.dataAbertura = dataAbertura;
+		this.dataFechamento = dataFechamento;
 		this.prioridade = prioridade;
 		this.status = status;
-		this.paciente = paciente;
 		this.medico = medico;
-		this.listaMedico = listaMedico;
+		this.paciente = paciente;
 		this.consultorio = consultorio;
 	}
-	
-	
-
-
 
 	public Integer getId() {
 		return id;
@@ -125,20 +147,6 @@ public class Consulta {
 		this.medico = medico;
 	}
 
-
-
-	public List<Medico> getListaMedico() {
-		return listaMedico;
-	}
-
-
-
-	public void setListaMedico(List<Medico> listaMedico) {
-		this.listaMedico = listaMedico;
-	}
-
-
-
 	public Consultorio getConsultorio() {
 		return consultorio;
 	}
@@ -149,10 +157,6 @@ public class Consulta {
 		this.consultorio = consultorio;
 	}
 	
-	
-
-
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -172,16 +176,5 @@ public class Consulta {
 		return Objects.equals(id, other.id);
 	}
 
-
-
-	@Override
-	public String toString() {
-		return "Consulta [id=" + id + ", dataAbertura=" + dataAbertura + ", dataFechamento=" + dataFechamento
-				+ ", prioridade=" + prioridade + ", status=" + status + ", paciente=" + paciente + ", medico=" + medico
-				+ ", listaMedico=" + listaMedico + ", consultorio=" + consultorio + "]";
-	}
 	
-	
-
-
 }

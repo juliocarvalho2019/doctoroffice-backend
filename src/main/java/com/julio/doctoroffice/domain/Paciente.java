@@ -2,18 +2,30 @@ package com.julio.doctoroffice.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Paciente extends Pessoa{
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
+import com.julio.doctoroffice.domain.enums.Perfil;
+
+@Entity
+public class Paciente extends Pessoa{
+	private static final long serialVersionUID = 1L;
+	
+	
 	private List<Consulta> consultas = new ArrayList<>();
 
 	public Paciente() {
 		super();
+		addPerfil(Perfil.PACIENTE);
 	}
 
-	public Paciente(Integer id, String nome, String cpf, String email, String senha) {
-		super(id, nome, cpf, email, senha);
+	public Paciente(List<Consulta> consultas) {
+		super();
+		this.consultas = consultas;
+		addPerfil(Perfil.PACIENTE);
 	}
 
+	@OneToMany(mappedBy = "paciente")
 	public List<Consulta> getConsultas() {
 		return consultas;
 	}
@@ -22,11 +34,5 @@ public class Paciente extends Pessoa{
 		this.consultas = consultas;
 	}
 
-	@Override
-	public String toString() {
-		return "Paciente [consultas=" + consultas + "]";
-	}
-	
-	
 	
 }
