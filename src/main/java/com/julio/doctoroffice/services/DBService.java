@@ -38,19 +38,19 @@ public class DBService {
 		med1.addPerfil(Perfil.MEDICO);
 		
 		Medico med2 = new Medico(null, "Fernando da Silva", "94786182028","fernando@mail.com", "123", "CRM/SP 123463", "Clinico Geral", 28);
-		med1.addPerfil(Perfil.MEDICO);
+		med2.addPerfil(Perfil.MEDICO);
 		
 		Medico med3 = new Medico(null, "Sergio Gianini", "87607961038","sergio@mail.com", "123", "CRM/SP 123452", "Obstetra", 32);
-		med1.addPerfil(Perfil.MEDICO);
+		med3.addPerfil(Perfil.MEDICO);
 		
 		Paciente pac1 = new Paciente(null, "João Antônio Filho","64015114000", "joao@email.com", "123");
 		pac1.addPerfil(Perfil.PACIENTE);
 		
 		Paciente pac2 = new Paciente(null, "Roberval da Silva","39937105099", "roberval@email.com", "123");
-		pac1.addPerfil(Perfil.PACIENTE);
+		pac2.addPerfil(Perfil.PACIENTE);
 		
 		Paciente pac3 = new Paciente(null, "Pedro José","91105408060", "pedrojose@email.com", "123");
-		pac1.addPerfil(Perfil.PACIENTE);
+		pac3.addPerfil(Perfil.PACIENTE);
 		
 		Consultorio cons1 = new Consultorio(null, 1);
 		
