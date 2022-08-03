@@ -19,6 +19,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.julio.doctoroffice.domain.enums.Perfil;
 
 @Entity
@@ -45,6 +46,7 @@ public abstract class Pessoa implements Serializable{
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	protected LocalDate dataCriacao = LocalDate.now();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "pessoa")
 	private List<Consulta> consultas = new ArrayList<>();
 

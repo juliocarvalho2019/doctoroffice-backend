@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.julio.doctoroffice.domain.enums.Perfil;
 
 
@@ -20,6 +21,7 @@ public class Medico extends Pessoa{
 	private String especialidade;
 	private Integer idade;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "medico")
 	private List<Consulta> consultas = new ArrayList<>();
 

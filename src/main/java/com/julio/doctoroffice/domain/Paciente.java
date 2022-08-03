@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.julio.doctoroffice.domain.enums.Perfil;
 
 @Entity
@@ -14,6 +15,7 @@ public class Paciente extends Pessoa{
 	
 	private List<Consulta> consultas = new ArrayList<>();
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "paciente")
 	public List<Consulta> getConsultas() {
 		return consultas;
