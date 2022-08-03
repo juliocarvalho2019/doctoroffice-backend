@@ -52,18 +52,21 @@ public class Consulta implements Serializable{
 		super();
 	}
 
-	public Consulta(Integer id, LocalDate dataAbertura, LocalDate dataFechamento, Prioridade prioridade, Status status,
-			Medico medico, Paciente paciente, Consultorio consultorio) {
+	
+
+	public Consulta(Integer id, Prioridade prioridade, Status status, Pessoa pessoa, Medico medico, Paciente paciente,
+			Consultorio consultorio) {
 		super();
 		this.id = id;
-		this.dataAbertura = dataAbertura;
-		this.dataFechamento = dataFechamento;
 		this.prioridade = prioridade;
 		this.status = status;
+		this.pessoa = pessoa;
 		this.medico = medico;
 		this.paciente = paciente;
 		this.consultorio = consultorio;
 	}
+
+
 
 	public Integer getId() {
 		return id;

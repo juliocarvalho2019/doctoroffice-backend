@@ -28,12 +28,11 @@ public class Medico extends Pessoa{
 		addPerfil(Perfil.PACIENTE);
 	}
 
-	public Medico(String crm, String especialidade, Integer idade, List<Consulta> consultas) {
-		super();
+	public Medico(Integer id, String nome, String cpf, String email, String senha,String crm, String especialidade, Integer idade) {
+		super(id, nome, cpf, email, senha);
 		this.crm = crm;
 		this.especialidade = especialidade;
 		this.idade = idade;
-		this.consultas = consultas;
 		addPerfil(Perfil.PACIENTE);
 	}
 

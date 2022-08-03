@@ -54,17 +54,13 @@ public abstract class Pessoa implements Serializable{
 	}
 
 	
-	public Pessoa(Integer id, String nome, String cpf, String email, String senha, Set<Integer> perfis,
-			LocalDate dataCriacao, List<Consulta> consultas) {
+	public Pessoa(Integer id, String nome, String cpf, String email, String senha) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;
 		this.senha = senha;
-		this.perfis = perfis;
-		this.dataCriacao = dataCriacao;
-		this.consultas = consultas;
 	}
 
 

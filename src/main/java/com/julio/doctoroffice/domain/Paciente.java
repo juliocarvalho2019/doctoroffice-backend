@@ -14,20 +14,19 @@ public class Paciente extends Pessoa{
 	
 	private List<Consulta> consultas = new ArrayList<>();
 
+	@OneToMany(mappedBy = "paciente")
+	public List<Consulta> getConsultas() {
+		return consultas;
+	}
+	
 	public Paciente() {
 		super();
 		addPerfil(Perfil.PACIENTE);
 	}
 
-	public Paciente(List<Consulta> consultas) {
-		super();
-		this.consultas = consultas;
+	public Paciente(Integer id, String nome, String cpf, String email, String senha) {
+		super(id, nome, cpf, email, senha);
 		addPerfil(Perfil.PACIENTE);
-	}
-
-	@OneToMany(mappedBy = "paciente")
-	public List<Consulta> getConsultas() {
-		return consultas;
 	}
 
 	public void setConsultas(List<Consulta> consultas) {
