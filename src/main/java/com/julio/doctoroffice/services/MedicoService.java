@@ -47,6 +47,16 @@ public class MedicoService {
 		validate(objDTO);
 		oldObj = new Medico(objDTO);
 		return repository.save(oldObj);
+	}
+	
+	public void delete(Integer id) {
+		Medico obj = findById(id);
+		
+		if(obj.getConsultas().size() > 0 ) {
+			throw new DataIntegrityVioalationException("Médico possui consultas agendadas e não pode ser deletado!");
+		}else {
+			repository.deleteById(id);
+		}
 		
 	}
 
@@ -69,6 +79,8 @@ public class MedicoService {
 		
 		
 	}
+
+
 
 	
 }

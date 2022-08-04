@@ -2,9 +2,7 @@ package com.julio.doctoroffice.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -16,12 +14,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 import org.hibernate.validator.constraints.br.CPF;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.julio.doctoroffice.domain.enums.Perfil;
 
 @Entity
@@ -49,9 +45,9 @@ public abstract class Pessoa implements Serializable{
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	protected LocalDate dataCriacao = LocalDate.now();
 	
-	@JsonIgnore
-	@OneToMany(mappedBy = "pessoa")
-	private List<Consulta> consultas = new ArrayList<>();
+	//@JsonIgnore
+	//@OneToMany(mappedBy = "pessoa")
+	//private List<Consulta> consultas = new ArrayList<>();
 
 	public Pessoa() {
 		super();
@@ -66,6 +62,7 @@ public abstract class Pessoa implements Serializable{
 		this.cpf = cpf;
 		this.email = email;
 		this.senha = senha;
+		addPerfil(Perfil.PACIENTE);
 	}
 
 
@@ -125,16 +122,6 @@ public abstract class Pessoa implements Serializable{
 		this.dataCriacao = dataCriacao;
 	}
 	
-//	public List<Consulta> getConsultas() {
-//		return consultas;
-//	}
-//
-//
-//	public void setConsultas(List<Consulta> consultas) {
-//		this.consultas = consultas;
-//	}
-
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
