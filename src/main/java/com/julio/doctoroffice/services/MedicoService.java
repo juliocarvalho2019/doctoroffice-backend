@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.julio.doctoroffice.domain.Medico;
 import com.julio.doctoroffice.repositories.MedicoRepository;
+import com.julio.doctoroffice.services.exceptions.ObjectnotFoundException;
 
 @Service
 public class MedicoService {
@@ -16,6 +17,6 @@ public class MedicoService {
 	
 	public Medico findById(Integer id) {
 		Optional<Medico> obj = repository.findById(id);
-		return obj.orElse(null);
+		return obj.orElseThrow(() -> new ObjectnotFoundException("Objeto não encontrado! Id: " + id));
 	}
 }
