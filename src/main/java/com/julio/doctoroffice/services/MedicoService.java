@@ -3,6 +3,8 @@ package com.julio.doctoroffice.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +40,15 @@ public class MedicoService {
 		Medico newObj = new Medico(objDTO);
 		return repository.save(newObj);
 	}
+	
+	public Medico update(Integer id, @Valid MedicoDTO objDTO) {
+		objDTO.setId(id);
+		Medico oldObj = findById(id);
+		validate(objDTO);
+		oldObj = new Medico(objDTO);
+		return repository.save(oldObj);
+		
+	}
 
 	private void validate(MedicoDTO objDTO) {
 		Optional<Pessoa> obj = pessoaRepository.findByCpf(objDTO.getCpf());
@@ -58,4 +69,6 @@ public class MedicoService {
 		
 		
 	}
+
+	
 }
