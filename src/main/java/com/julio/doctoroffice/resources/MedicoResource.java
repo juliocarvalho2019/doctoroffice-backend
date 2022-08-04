@@ -4,7 +4,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.servlet.Servlet;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -43,7 +43,7 @@ public class MedicoResource {
 	}
 	
 	@PostMapping
-	public ResponseEntity<MedicoDTO> create(@RequestBody MedicoDTO objDTO){
+	public ResponseEntity<MedicoDTO> create(@Valid @RequestBody MedicoDTO objDTO){
 		Medico newObj = service.create(objDTO);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
