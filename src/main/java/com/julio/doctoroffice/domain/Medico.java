@@ -2,12 +2,14 @@ package com.julio.doctoroffice.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.julio.doctoroffice.domain.dtos.MedicoDTO;
 import com.julio.doctoroffice.domain.enums.Perfil;
 
 
@@ -37,6 +39,22 @@ public class Medico extends Pessoa{
 		this.idade = idade;
 		addPerfil(Perfil.PACIENTE);
 	}
+	
+	public Medico(MedicoDTO obj) {
+		super();
+		this.id = obj.getId();
+		this.nome = obj.getNome();
+		this.cpf = obj.getCpf();
+		this.email = obj.getCpf();
+		this.senha = obj.getSenha();
+		this.perfis = obj.getPerfis().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
+		this.dataCriacao = obj.getDataCriacao();
+		
+		this.crm = obj.getCrm();
+		this.especialidade = obj.getEspecialidade();
+		this.idade = obj.getIdade();
+	}
+
 
 	public String getCrm() {
 		return crm;

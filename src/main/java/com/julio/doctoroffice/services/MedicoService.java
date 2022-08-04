@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.julio.doctoroffice.domain.Medico;
+import com.julio.doctoroffice.domain.dtos.MedicoDTO;
 import com.julio.doctoroffice.repositories.MedicoRepository;
 import com.julio.doctoroffice.services.exceptions.ObjectnotFoundException;
 
@@ -23,5 +24,11 @@ public class MedicoService {
 
 	public List<Medico> findAll() {
 		return repository.findAll();
+	}
+
+	public Medico create(MedicoDTO objDTO) {
+		objDTO.setId(null);
+		Medico newObj = new Medico(objDTO);
+		return repository.save(newObj);
 	}
 }

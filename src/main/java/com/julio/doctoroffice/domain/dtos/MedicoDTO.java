@@ -29,6 +29,7 @@ public class MedicoDTO implements Serializable{
 	
 	public MedicoDTO() {
 		super();
+		addPerfil(Perfil.PACIENTE);
 	}
 
 	public MedicoDTO(Medico obj) {
@@ -44,6 +45,8 @@ public class MedicoDTO implements Serializable{
 		this.crm = obj.getCrm();
 		this.especialidade = obj.getEspecialidade();
 		this.idade = obj.getIdade();
+		
+		addPerfil(Perfil.PACIENTE);
 	}
 
 	public Integer getId() {
