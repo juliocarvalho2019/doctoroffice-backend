@@ -3,6 +3,8 @@ package com.julio.doctoroffice.domain.dtos;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.julio.doctoroffice.domain.Consulta;
 
@@ -14,10 +16,15 @@ public class ConsultaDTO implements Serializable{
 	private LocalDate dataAbertura = LocalDate.now();
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataFechamento;
+	@NotNull(message = "O campo prioridade é obrigatório!")
 	private Integer prioridade;
+	@NotNull(message = "O campo status é obrigatório!")
 	private Integer status;
+	@NotNull(message = "O campo médico é obrigatório!")
 	private Integer medico;
+	@NotNull(message = "O campo paciente é obrigatório!")
 	private Integer paciente;
+	@NotNull(message = "O campo consultório é obrigatório!")
 	private Integer consultorio;
 	private String nomeMedico;
 	private String nomePaciente;

@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.julio.doctoroffice.domain.dtos.ConsultorioDTO;
+
 @Entity
 public class Consultorio implements Serializable{
 	
@@ -17,7 +19,7 @@ public class Consultorio implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected Integer id;
+	private Integer id;
 	
 	private Integer numeroConsultorio;
 	
@@ -29,6 +31,13 @@ public class Consultorio implements Serializable{
 	public Consultorio() {
 		super();
 	}
+	
+	public Consultorio(ConsultorioDTO obj) {
+		super();
+		this.id = obj.getId();
+		this.numeroConsultorio = obj.getNumeroConsultorio();
+	}
+
 	
 	public Consultorio(Integer id, Integer numeroConsultorio) {
 		super();
