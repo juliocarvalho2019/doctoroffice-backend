@@ -1,5 +1,6 @@
 package com.julio.doctoroffice.services;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,13 +50,25 @@ public class ConsultaService {
 		
 	}
 	
+    public Consulta update(Integer id, @Valid ConsultaDTO objDTO) {
+    	objDTO.setId(id);
+    	Consulta oldObj = findById(id);
+    	oldObj = newConsulta(objDTO);
+    	return repository.save(oldObj);
+	}
+	
 	private Consulta newConsulta(ConsultaDTO obj) {
 		Medico medico = medicoService.findById(obj.getMedico());
 		Paciente paciente = pacienteService.findById(obj.getPaciente());
 		Consultorio consultorio = consultorioService.findById(obj.getConsultorio());		
 		Consulta consulta = new Consulta();
+		
 		if(obj.getId() != null) {
 			consulta.setId(obj.getId());
+		}
+		
+		if(obj.getStatus().equals(2)) {
+			consulta.setDataFechamento(LocalDate.now());
 		}
 		
 		consulta.setMedico(medico);
@@ -66,6 +79,8 @@ public class ConsultaService {
 		return consulta;
 		
 	}
+
+	
 	
 
 }
