@@ -11,6 +11,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 @Component
 public class JWTUtil {
+	
 	@Value("${jwt.expiration}")
 	private Long expiration;
 	

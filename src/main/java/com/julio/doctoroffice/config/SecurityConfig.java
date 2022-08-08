@@ -1,6 +1,5 @@
 package com.julio.doctoroffice.config;
 
-
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +20,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import com.julio.doctoroffice.security.JWTAuthenticationFilter;
 import com.julio.doctoroffice.security.JWTAuthorizationFilter;
 import com.julio.doctoroffice.security.JWTUtil;
+
 
 
 @EnableWebSecurity
