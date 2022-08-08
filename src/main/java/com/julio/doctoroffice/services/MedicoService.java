@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.julio.doctoroffice.domain.Medico;
@@ -25,6 +26,9 @@ public class MedicoService {
 	@Autowired
 	private PessoaRepository pessoaRepository;
 	
+	@Autowired
+	private BCryptPasswordEncoder encoder;
+	
 	public Medico findById(Integer id) {
 		Optional<Medico> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ObjectnotFoundException("Objeto não encontrado! Id: " + id));
@@ -36,6 +40,7 @@ public class MedicoService {
 
 	public Medico create(MedicoDTO objDTO) {
 		objDTO.setId(null);
+		objDTO.setSenha(encoder.encode(objDTO.getSenha()));
 		validate(objDTO);
 		Medico newObj = new Medico(objDTO);
 		return repository.save(newObj);
@@ -44,6 +49,10 @@ public class MedicoService {
 	public Medico update(Integer id, @Valid MedicoDTO objDTO) {
 		objDTO.setId(id);
 		Medico oldObj = findById(id);
+		
+		if(!objDTO.getSenha().equals(oldObj.getSenha())) 
+			objDTO.setSenha(encoder.encode(objDTO.getSenha()));
+		
 		validate(objDTO);
 		oldObj = new Medico(objDTO);
 		return repository.save(oldObj);
