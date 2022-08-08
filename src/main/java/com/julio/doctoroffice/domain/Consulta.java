@@ -2,7 +2,6 @@ package com.julio.doctoroffice.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +23,7 @@ public class Consulta implements Serializable{
 	private Integer id;
 
 	@JsonFormat(pattern = "dd/MM/yyyy")
-	private LocalDateTime dataAbertura;
+	private LocalDate dataAbertura = LocalDate.now();
 	
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataFechamento;
@@ -50,11 +49,10 @@ public class Consulta implements Serializable{
 	}
 
 	
-	public Consulta(Integer id, LocalDateTime dataAbertura, Prioridade prioridade, Status status, Medico medico,
+	public Consulta(Integer id, Prioridade prioridade, Status status, Medico medico,
 			Paciente paciente, Consultorio consultorio) {
 		super();
 		this.id = id;
-		this.dataAbertura = dataAbertura;
 		this.prioridade = prioridade;
 		this.status = status;
 		this.medico = medico;
@@ -71,19 +69,6 @@ public class Consulta implements Serializable{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-
-	public LocalDateTime getDataAbertura() {
-		return dataAbertura;
-	}
-
-
-
-	public void setDataAbertura(LocalDateTime dataAbertura) {
-		this.dataAbertura = dataAbertura;
-	}
-
-
 
 	public LocalDate getDataFechamento() {
 		return dataFechamento;

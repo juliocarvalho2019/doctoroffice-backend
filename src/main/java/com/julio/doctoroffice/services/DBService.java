@@ -1,7 +1,6 @@
 package com.julio.doctoroffice.services;
 
 
-import java.time.LocalDateTime;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,13 +65,13 @@ public class DBService {
 		Consultorio cons10 = new Consultorio(null, 10);
 		
 		
-		Consulta consult1 = new Consulta(null,LocalDateTime.of(2022, 07, 06, 16, 00, 00), Prioridade.MEDIA,  Status.ANDAMENTO, med1, pac1, cons1);
+		Consulta consult1 = new Consulta(null, Prioridade.MEDIA,  Status.ANDAMENTO, med1, pac1, cons1);
 		
-		Consulta consult2 = new Consulta(null,LocalDateTime.of(2022, 07, 06, 16, 15, 00), Prioridade.MEDIA, Status.ANDAMENTO, med1, pac1, cons1);
+		Consulta consult2 = new Consulta(null, Prioridade.MEDIA, Status.ANDAMENTO, med1, pac1, cons1);
 	
-		Consulta consult3 = new Consulta(null,LocalDateTime.of(2022, 07, 06, 16, 30, 00), Prioridade.BAIXA,Status.ABERTO, med2, pac2, cons2);
+		Consulta consult3 = new Consulta(null, Prioridade.BAIXA,Status.ABERTO, med2, pac2, cons2);
 		
-		Consulta consult4 = new Consulta(null,LocalDateTime.of(2022, 07, 06, 16, 45, 00), Prioridade.MEDIA,Status.ANDAMENTO, med3, pac3, cons3);
+		Consulta consult4 = new Consulta(null, Prioridade.MEDIA,Status.ANDAMENTO, med3, pac3, cons3);
 		
 		medicoRepository.saveAll(Arrays.asList(med1, med2, med3));
 		pacienteRepository.saveAll(Arrays.asList(pac1, pac2, pac3));

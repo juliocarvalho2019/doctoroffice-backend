@@ -2,7 +2,6 @@ package com.julio.doctoroffice.domain.dtos;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import javax.validation.constraints.NotNull;
 
@@ -13,9 +12,8 @@ public class ConsultaDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
-	@NotNull(message = "O campo data Consulta é obrigatório!")
 	@JsonFormat(pattern = "dd/MM/yyyy")
-	private LocalDateTime dataAbertura;
+	private LocalDate dataAbertura = LocalDate.now();
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataFechamento;
 	@NotNull(message = "O campo prioridade é obrigatório!")
@@ -39,7 +37,6 @@ public class ConsultaDTO implements Serializable{
 	public ConsultaDTO(Consulta obj) {
 		super();
 		this.id = obj.getId();
-		this.dataAbertura = obj.getDataAbertura();
 		this.dataFechamento = obj.getDataFechamento();
 		this.prioridade = obj.getPrioridade().getCodigo();
 		this.status = obj.getStatus().getCodigo();
@@ -57,15 +54,6 @@ public class ConsultaDTO implements Serializable{
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-
-	public LocalDateTime getDataAbertura() {
-		return dataAbertura;
-	}
-
-	public void setDataAbertura(LocalDateTime dataAbertura) {
-		this.dataAbertura = dataAbertura;
 	}
 
 	public LocalDate getDataFechamento() {
