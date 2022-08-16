@@ -22,6 +22,7 @@ import com.julio.doctoroffice.domain.dtos.ConsultaDTO;
 import com.julio.doctoroffice.services.ConsultaService;
 
 @RestController
+//@Api(value="Mostra Lista de consultas")
 @RequestMapping(value = "/consultas")
 public class ConsultaResource {
 	
